@@ -3,10 +3,11 @@ import './errorMessage.css'
 
 const ErrorMessage = () => {
     return (
-        <>
-            <span>Something goes wrong</span>
-            <img src={process.env.PUBLIC_URL + '/img/got.jpg'} alt="error"></img>
-        </>
+        <div className='error-text'>
+            <img src='https://klike.net/uploads/posts/2020-04/1587631210_4.jpg' alt="error" />
+            <span >Something goes wrong</span>
+
+        </div>
     );
 };
 
