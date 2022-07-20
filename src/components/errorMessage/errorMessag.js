@@ -4,7 +4,7 @@ import './errorMessage.css'
 const ErrorMessage = () => {
     return (
         <div className='error-text'>
-            <img src='https://klike.net/uploads/posts/2020-04/1587631210_4.jpg' alt="error" />
+            <img src='https://www.freeiconspng.com/uploads/alarm-error-icon-30.png' width={500} alt="error" />
             <span >Something goes wrong</span>
 
         </div>

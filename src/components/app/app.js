@@ -2,29 +2,36 @@ import React, { Component } from 'react';
 import { Col, Row, Container } from 'reactstrap';
 import Header from '../header';
 import RandomChar from '../randomChar';
-import ItemList from '../itemList';
-import CharDetails from '../charDetails';
 import './app.css'
+import ErrorMessage from '../errorMessage';
+import CharacterPage from '../pages/chractrPage';
+import BooksPage from '../pages/booksPage';
+import HousesPage from '../pages/housesPage';
 export default class App extends Component {
 
     state = {
         showRandomChar: null,
-        selectedChar: 130
+        error: false
     }
 
     toggleRandomChar = () => {
         this.setState((state) => { return { showRandomChar: !state.showRandomChar } })
     }
 
-    onCharSelected = (id) => {
+    componentDidCatch() {
+        console.log('error');
         this.setState({
-            selectedChar: id
+            error: true
         })
     }
 
     render() {
 
         const randomChar = this.state.showRandomChar ? <RandomChar /> : null;
+
+        if (this.state.error) {
+            return <ErrorMessage />
+        }
 
         return (
             <>
@@ -40,15 +47,9 @@ export default class App extends Component {
                     <div className='toogleBtn'>
                         <button className="btn btn-primary" type="submit" onClick={this.toggleRandomChar}>Toogle random character</button>
                     </div>
-                    <Row>
-                        <Col md='6'>
-                            <ItemList onCharSelected={this.onCharSelected} />
-
-                        </Col>
-                        <Col md='6'>
-                            <CharDetails charId={this.state.selectedChar} />
-                        </Col>
-                    </Row>
+                    <CharacterPage />
+                    <BooksPage />
+                    <HousesPage />
                 </Container>
             </>
         )

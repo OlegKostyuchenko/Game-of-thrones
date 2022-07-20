@@ -3,7 +3,7 @@ export default class gotService {
         this._apiBase = 'https://www.anapioficeandfire.com/api'
     }
 
-    async getResource(url) {
+    getResource = async (url) => {
         const res = await fetch(`${this._apiBase}${url}`);
 
         if (!res.ok) {
@@ -13,38 +13,44 @@ export default class gotService {
         return await res.json();
     };
 
-    async getAllCharacters() {
+    getAllCharacters = async () => {
         const chars = await this.getResource("/characters?page=7&pageSize=10");
         return chars.map(this._transformChar)
     }
 
-    async getCharacter(id) {
+    getCharacter = async (id) => {
         const char = await this.getResource(`/characters/${id}`);
         return this._transformChar(char)
     }
 
-    async getAllBooks() {
+    getAllBooks = async () => {
         const books = await this.getResource("/books");
         return books.map(this._transformBook)
     }
 
-    async getBook(id) {
+    getBook = async (id) => {
         const book = await this.getResource(`/books/${id}`);
         return this._transformBook(book)
     }
 
-    async getAllHouses() {
+    getAllHouses = async () => {
         const houses = await this.getResource("/houses");
         return houses.map(this._transformHouse)
     }
 
-    async getHouse(id) {
+    getHouse = async (id) => {
         const house = await this.getResource(`/houses/${id}`);
         return this._transformHouse(house)
     }
 
-    _transformChar(char) {
+    _extractId = (item) => {
+        const idRegExp = /\/([0-9]*)$/;
+        return item.url.match(idRegExp)[1];
+    }
+
+    _transformChar = (char) => {
         return {
+            id: this._extractId(char),
             name: char.name || '--',
             gender: char.gender || '--',
             born: char.born || '--',
@@ -53,7 +59,7 @@ export default class gotService {
         }
     }
 
-    _transformHouse(house) {
+    _transformHouse = (house) => {
         return {
             name: house.name,
             region: house.region,
@@ -64,7 +70,7 @@ export default class gotService {
         }
     }
 
-    _transformBook(book) {
+    _transformBook = (book) => {
         return {
             name: book.name,
             numberOfPages: book.numberOfPages,
