@@ -27,9 +27,9 @@ export default class ItemList extends Component {
 
             return (
                 <li
-                    key={id || i + 'f'}
+                    key={id || i + 1}
                     className="list-group-item"
-                    onClick={() => this.props.onItemSelected(id || i + 'f')}>
+                    onClick={() => this.props.onItemSelected(id || i + 1)}>
                     {label}
                 </li>
             )

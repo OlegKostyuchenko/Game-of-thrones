@@ -19,6 +19,8 @@ export default class ItemDetails extends Component {
 
     gotService = new gotService()
 
+
+
     state = {
         item: null
     }
@@ -39,7 +41,9 @@ export default class ItemDetails extends Component {
             return;
         }
 
-        this.gotService.getCharacter(itemId)
+        const getData = this.props.getItem
+
+        getData(itemId)
             .then((item) => {
                 this.setState({ item })
             })
