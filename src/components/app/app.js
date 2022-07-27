@@ -49,7 +49,7 @@ export default class App extends Component {
                             </Col>
                         </Row>
                         <div className='toogleBtn'>
-                            <button className="btn btn-primary" type="submit" onClick={this.toggleRandomChar}>Toogle random character</button>
+                            <button className="btn btn-primary" type="submit" onClick={this.toggleRandomChar}>Random character</button>
                         </div>
 
                         <Routes>

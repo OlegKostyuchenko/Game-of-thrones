@@ -37,7 +37,7 @@ const BooksItem = () => {
     const { name, numberOfPages, publisher, released } = items
     const errorMessage = error ? <ErrorMessage /> : null;
     const content = !(isLoaded || error) ? <View name={name} numberOfPages={numberOfPages} publisher={publisher} released={released} /> : null;
-    const spiner = isLoaded ? <Spiner /> : null;
+    const spiner = isLoaded ? <Spiner color='blue' size='15' /> : null;
 
     return (
         <div className="item-detailsics">
@@ -47,9 +47,6 @@ const BooksItem = () => {
 
         </div>
     )
-
-
-
 };
 
 const View = ({ name, numberOfPages, publisher, released }) => {
@@ -74,5 +71,4 @@ const View = ({ name, numberOfPages, publisher, released }) => {
         </>
     )
 }
-
 export default BooksItem;

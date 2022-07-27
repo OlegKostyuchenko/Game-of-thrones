@@ -4,7 +4,6 @@ import './style.css'
 import ErrorMessage from '../errorMessage';
 import Spiner from '../spinner';
 
-
 const CharacterItem = () => {
     const { id } = useParams();
     const paramsSerch = 'characters/'
@@ -39,8 +38,9 @@ const CharacterItem = () => {
 
     const { name, born, gender, died, culture } = items
     const errorMessage = error ? <ErrorMessage /> : null;
+    const spiner = isLoaded ? <Spiner color='blue' size='15' /> : null;
     const content = !(isLoaded || error) ? <View name={name} born={born} gender={gender} died={died} culture={culture} /> : null;
-    const spiner = isLoaded ? <Spiner /> : null;
+
 
     return (
         <div className="item-detailsics">
@@ -50,9 +50,6 @@ const CharacterItem = () => {
 
         </div>
     )
-
-
-
 };
 
 const View = ({ name, born, gender, died, culture }) => {
@@ -80,8 +77,5 @@ const View = ({ name, born, gender, died, culture }) => {
         </>
     )
 }
-
-
-
 export default CharacterItem;
 

@@ -10,10 +10,10 @@ const override = {
 };
 
 
-const Spiner = () => {
+const Spiner = (props) => {
     return (
         <div>
-            <PropagateLoader color='black' cssOverride={override} size={25} />
+            <PropagateLoader color={props.color} cssOverride={override} size={props.size} />
         </div>
     );
 };
