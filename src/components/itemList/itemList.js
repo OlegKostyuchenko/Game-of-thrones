@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Spiner from '../spinner';
+import { Link } from 'react-router-dom';
 
 import './itemList.css';
 export default class ItemList extends Component {
@@ -26,12 +27,12 @@ export default class ItemList extends Component {
             const label = this.props.renderItem(elem)
 
             return (
-                <li
+                <Link to={`${id || i + 1}`}
                     key={id || i + 1}
                     className="list-group-item"
                     onClick={() => this.props.onItemSelected(id || i + 1)}>
                     {label}
-                </li>
+                </Link>
             )
         })
     }
@@ -45,9 +46,11 @@ export default class ItemList extends Component {
         const items = this.renderItems(itemList)
 
         return (
-            <ul className="item-list list-group" >
-                {items}
-            </ul>
+            <div className='item-details rounded'>
+                <ul className="item-list list-group" >
+                    {items}
+                </ul>
+            </div>
         );
     }
 }

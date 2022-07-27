@@ -4,14 +4,18 @@ import Header from '../header';
 import RandomChar from '../randomChar';
 import './app.css'
 import ErrorMessage from '../errorMessage';
+import getData from '../getData';
 import { BooksPage, HousesPage, CharacterPage, CharacterItem, BooksItem, HousesItem } from '../pages'
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+
 export default class App extends Component {
 
     state = {
         showRandomChar: null,
         error: false
     }
+
+
 
     toggleRandomChar = () => {
         this.setState((state) => { return { showRandomChar: !state.showRandomChar } })
@@ -25,7 +29,7 @@ export default class App extends Component {
     }
 
     render() {
-
+        console.log(getData('character', 78));
         const randomChar = this.state.showRandomChar ? <RandomChar /> : null;
 
         if (this.state.error) {
@@ -34,7 +38,7 @@ export default class App extends Component {
 
         return (
             <BrowserRouter>
-                <>
+                <div className='all' >
                     <Container>
                         <Header />
                     </Container>
@@ -49,17 +53,17 @@ export default class App extends Component {
                         </div>
 
                         <Routes>
-                            <Route path="/chars" element={<CharacterPage />} />
-                            <Route path="/books" element={<BooksPage />} />
-                            <Route path="/houses" element={<HousesPage />} />
-                            <Route path="/chars/:id" element={<CharacterItem />} />
-                            <Route path="/books/:id" element={<BooksItem />} />
-                            <Route path="/houses/:id" element={<HousesItem />} />
+                            <Route path="chars" element={<CharacterPage />} />
+                            <Route path="chars/:id" element={<CharacterItem />} />
+                            <Route path="books" element={<BooksPage />} />
+                            <Route path="books/:id" element={<BooksItem />} />
+                            <Route path="houses" element={<HousesPage />} />
+                            <Route path="houses/:id" element={<HousesItem />} />
 
                         </Routes>
 
                     </Container>
-                </>
+                </div>
             </BrowserRouter>
         )
     }
