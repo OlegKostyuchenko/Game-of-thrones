@@ -40,7 +40,7 @@ export default class ItemList extends Component {
     render() {
         const { itemList } = this.state;
         if (!itemList) {
-            return <Spiner />
+            return <Spiner color='blue' size='30' />
         }
 
         const items = this.renderItems(itemList)

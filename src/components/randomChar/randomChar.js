@@ -47,7 +47,7 @@ export default class RandomChar extends Component {
 
         const errorMessage = error ? <ErrorMessage /> : null;
         const content = !(loading || error) ? <View char={char} /> : null;
-        const spiner = loading ? <Spiner /> : null;
+        const spiner = loading ? <Spiner color='black' size='25' /> : null;
 
         return (
             <div className="random-block rounded">

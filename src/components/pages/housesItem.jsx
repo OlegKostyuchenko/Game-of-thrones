@@ -4,8 +4,6 @@ import './style.css'
 import ErrorMessage from '../errorMessage';
 import Spiner from '../spinner';
 
-
-
 const HousesItem = () => {
     const { id } = useParams();
     const paramsSerch = 'houses/'
@@ -41,7 +39,7 @@ const HousesItem = () => {
     const { name, region, words, titles, overlord, ancestralWeapons } = items
     const errorMessage = error ? <ErrorMessage /> : null;
     const content = !(isLoaded || error) ? <View name={name} region={region} words={words} titles={titles} overlord={overlord} ancestralWeapons={ancestralWeapons} /> : null;
-    const spiner = isLoaded ? <Spiner /> : null;
+    const spiner = isLoaded ? <Spiner color='blue' size='15' /> : null;
 
     return (
         <div className="item-detailsics">
@@ -51,9 +49,6 @@ const HousesItem = () => {
 
         </div>
     )
-
-
-
 };
 
 const View = ({ name, region, words, titles, overlord, ancestralWeapons }) => {
@@ -85,5 +80,4 @@ const View = ({ name, region, words, titles, overlord, ancestralWeapons }) => {
         </>
     )
 }
-
 export default HousesItem;
